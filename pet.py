@@ -44,7 +44,7 @@ class pet:
         elif self.thrist < 90:
             self.thrist += 4
             print(f"gave {self.name} some water")
-            self.happiness -=  random.randint(1,5) 
+            self.happiness -=  random.randint(1,9) 
         print("------------------------------")
 
 
@@ -58,7 +58,7 @@ class pet:
         elif self.hygiene < 80:
             self.hygiene += 10
             print(f"{self.name} jumped in the pool")
-            self.hunger -=  random.randint(1,5) 
+            self.hunger -=  random.randint(1,9) 
         print("------------------------------")
 
 
@@ -68,22 +68,6 @@ age = int(input("How old is your pet: "))
 name =input("WHat is your pets name?: ")
 userpet = pet(age, name)
 while True:
-    if userpet.hunger < 0:
-        userpet.hunger == 0
-        print(f"yo {userpet.name} is hungry")
-        time.sleep(2)
-    elif userpet.hygiene < 0:
-        userpet.hygiene == 0
-        print(f"yo {userpet.name} smells")
-        time.sleep(2)
-    elif userpet.thrist < 0:
-        userpet.thrist == 0
-        print(f"yo {userpet.name} is THIRSTY")
-        time.sleep(2)
-    elif userpet.happiness < 0:
-        userpet.happiness == 0
-        print(f"yo {userpet.name} is BORED")
-        time.sleep(2)
     print(f"hunger:{userpet.hunger}, thirst:{userpet.thrist}, hygiene:{userpet.hygiene}, happiness:{userpet.happiness}")
     useraction = input("1 = feed, 2 = give water, 3 = wash, 4 = play:")
     if useraction == "1":
@@ -96,3 +80,5 @@ while True:
         userpet.play()
     else:
         print("Idiot") 
+    
+
