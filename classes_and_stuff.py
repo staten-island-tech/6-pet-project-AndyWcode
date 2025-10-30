@@ -8,7 +8,7 @@ items = [
 craftables = [
     {"item":"Iron sword","Rarity": "Rare","Recipe":["Iron","Iron","Stick"]},
     {"item":"Diamond sword","Rarity": "Epic","Recipe":["Diamond","Diamond","Stick"]},
-    {"item":"Diamond Chest plate","Rarity": "Epic","Recipe":["Diamond","Diamond","Diamond","Diamond","Diamond","Diamond","Diamond",]}
+    {"item":"Diamond Chest plate","Rarity": "Epic","Recipe":["Diamond"]*8}
 ]
 class user():
     
@@ -39,6 +39,33 @@ class user():
             for craftitem in craft["Recipe"]:
                 print(craftitem)
             print("------------------------")
+
+
+        userwant = input("What do you wanna craft?: ")
+        
+        selected = None
             
-me = user("Andy",["Iron","Stick"])
+        for crafts in craftables:
+            if userwant.lower() == crafts["item"].lower():
+                selected = crafts
+        if selected == None:
+            print("Item not in recipe")
+            return
+        
+        hasreq = all(req in self.invetory for req in selected["Recipe"])
+        if hasreq == True:
+            for required_item in selected["Recipe"]:
+                self.invetory.remove(required_item)
+            self.invetory.append(selected["item"])
+            print(f"You crafted {selected["item"]}")
+            print(f"{self.invetory}")
+        else:
+            print("no required items dood")
+
+        
+        
+
+
+            
+me = user("Andy",["Diamond"]*8)
 me.craft()
