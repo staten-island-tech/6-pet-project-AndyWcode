@@ -1,14 +1,15 @@
 import random
-import time
+
 
 class pet:
     def __init__(self, age, name,):
         self.age = age
         self.name = name
-        self.hunger = 50
-        self.thrist = 50
-        self.happiness = 20
-        self.hygiene = 30
+        self.hunger = random.randint(40, 60)
+        self.thrist = random.randint(30, 60)
+        self.happiness = random.randint(20, 40)
+        self.hygiene = random.randint(30,50)
+
         
         
     def feed(self):
@@ -64,21 +65,43 @@ class pet:
 
 
 
-age = int(input("How old is your pet: "))
-name =input("WHat is your pets name?: ")
-userpet = pet(age, name)
-while True:
-    print(f"hunger:{userpet.hunger}, thirst:{userpet.thrist}, hygiene:{userpet.hygiene}, happiness:{userpet.happiness}")
-    useraction = input("1 = feed, 2 = give water, 3 = wash, 4 = play:")
-    if useraction == "1":
-        userpet.feed()
-    elif useraction == "2":
-        userpet.drink()
-    elif useraction == "3":
-        userpet.wash()
-    elif useraction == "4":
-        userpet.play()
-    else:
-        print("Idiot") 
-    
 
+def maingame(userpet):
+        
+        action = 0
+        game = True
+        while game:
+                
+                print(f"hunger:{userpet.hunger}, thirst:{userpet.thrist}, hygiene:{userpet.hygiene}, happiness:{userpet.happiness}")
+                useraction = input("1 = feed, 2 = give water, 3 = wash, 4 = play:")
+                if useraction == "1":
+                    userpet.feed()
+                elif useraction == "2":
+                    userpet.drink()
+                elif useraction == "3":
+                    userpet.wash()
+                elif useraction == "4":
+                    userpet.play()
+                else:
+                    print("Idiot") 
+                action +=1
+                if userpet.hunger <= 0  or userpet.thrist <= 0:
+                    game = False
+        print(f"{userpet.name} is dead")
+        print(f"you did {action} actions before {userpet.name} died")
+
+def verifyandstuff():
+
+    while True:
+        age = input("How old is your pet: ")
+        if age.isdigit():
+            name = input("give your pet a name")
+            userpet = pet(age, name)
+            break
+            
+        else:
+            print("age has to be a integer or ur pet is too young")
+    maingame(userpet)
+        
+
+verifyandstuff()

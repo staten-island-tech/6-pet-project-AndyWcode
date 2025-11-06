@@ -74,7 +74,7 @@ window.geometry("600x600")
 window.title("Clicker Game!")
 
 multiplyer = 1
-number = 0 \
+number = 0 
 
 def clicker():
     global number
@@ -83,15 +83,15 @@ def clicker():
 def upgrade():
     global number
     global multiplyer
-    if number > 100:
+    if number > 100 * 2 * multiplyer:
         multiplyer += 1
         number -= 100 
-    
+    multiplyershow.config(text = multiplyer)
     
 clickingbutton = Button(window,text="click!", padx=50, pady=50, bg="gold", font=("Arial, 22"), command=clicker)
 
 infoshower = Label(window,text=number, padx =100, pady = 100, font="Arial, 30")
-
+multiplyershow = Label(window,text = multiplyer, padx = 20, pady = 20, font = "Arial, 15")
 upgradebutton = Button(window, text = "Upgrade!", padx = 25, pady = 25, font =("Arial","15"), command = upgrade)
 
 
@@ -99,4 +99,5 @@ infoshower.pack()
 
 clickingbutton.pack()
 upgradebutton.pack()
+multiplyershow.pack()
 window.mainloop()
